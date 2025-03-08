@@ -116,7 +116,7 @@ order by IR desc,ISU desc
 
 -- Promotion Type Analysis:
 
---•1. What are the top 2 promotion types that resulted in the highest Incremental Revenue?. 
+--â€¢1. What are the top 2 promotion types that resulted in the highest Incremental Revenue?. 
 
 select top 2  promo_type, sum((base_price * quantity_sold_after_promo)-(base_price * quantity_sold_before_promo))  as IR
 
@@ -127,7 +127,7 @@ group by  promo_type
 order by sum((base_price * quantity_sold_after_promo)-(base_price * quantity_sold_before_promo)) desc
 
 =======================================================================================================================================
---•2. What are the bottom 2 promotion types in terms of their impact on Incremental Sold Units?. 
+--â€¢2. What are the bottom 2 promotion types in terms of their impact on Incremental Sold Units?. 
 
 select top 2 promo_type ,sum(quantity_sold_after_promo - quantity_sold_before_promo) as IUS
 
@@ -139,7 +139,7 @@ order by sum(quantity_sold_after_promo - quantity_sold_before_promo) asc
 
 ========================================================================================================================================
 
---•3. Is there a significant difference in the performance of discount-based promotions versus BOGOF (Buy One 
+--â€¢3. Is there a significant difference in the performance of discount-based promotions versus BOGOF (Buy One 
 ---Get One Free) or cashback promotions?.
 
 select promo_type,store_id,sum((base_price * quantity_sold_after_promo)-(base_price * quantity_sold_before_promo))  as IR ,
@@ -177,7 +177,7 @@ ORDER BY
 
 ===================================================================================================================================
 
---4.• Which promotions strike the best balance between Incremental Sold Units and maintaining healthy margins?
+--4.â€¢ Which promotions strike the best balance between Incremental Sold Units and maintaining healthy margins?
 with cte as (
 select *,  CASE 
                 WHEN promo_type = '50% OFF' THEN base_price * 0.5
